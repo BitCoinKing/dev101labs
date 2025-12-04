@@ -1,18 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowRight, Lightbulb, Workflow, Rocket, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const AboutPage = () => {
-  const teamMembers = [
-    { name: "Jane Doe", title: "Founder / CEO", image: "/placeholder-team-1.jpg" },
-    { name: "John Smith", title: "Lead Strategist", image: "/placeholder-team-2.jpg" },
-    { name: "Emily White", title: "Head of Technology", image: "/placeholder-team-3.jpg" },
-    { name: "David Green", title: "Creative Director", image: "/placeholder-team-4.jpg" },
-  ];
-
   return (
     <div className="bg-offWhite text-darkNavy py-20">
       <div className="container mx-auto px-6">
@@ -75,30 +67,17 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Team/Leadership Placeholder */}
-        <section className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-center mb-12">
-            Meet Our Leadership (Placeholder)
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 text-center"
-              >
-                <div className="relative h-40 w-40 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
-                  <Image src={member.image} alt={member.name} layout="fill" objectFit="cover" className="rounded-full" />
-                  <span className="absolute">Team Photo Placeholder</span>
-                </div>
-                <h3 className="text-xl font-semibold font-display mb-1">{member.name}</h3>
-                <p className="text-electricCyan text-sm">{member.title}</p>
-              </motion.div>
-            ))}
-          </div>
+        {/* Team Statement */}
+        <section className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-lg md:text-xl leading-relaxed"
+          >
+            Dev101Labs partners with a network of expert engineers, designers, and strategists to deliver world-class solutions. Our extended team scales as projects demand.
+          </motion.p>
         </section>
 
         {/* CTA Banner */}
@@ -113,9 +92,9 @@ const AboutPage = () => {
             <h2 className="text-3xl md:text-5xl font-bold font-display leading-tight mb-8">
               Partner with us for transformative results.
             </h2>
-            <Link href="/contact" className="bg-darkNavy text-electricCyan px-10 py-4 rounded-full font-semibold text-xl hover:bg-offWhite transition-colors inline-flex items-center justify-center">
-              Get Started Today <ArrowRight className="ml-2" size={20} />
-            </Link>
+            <a href="mailto:info@dev101labs.com?subject=New%20Strategy%20Call%20Inquiry&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AWebsite%3A%20%5BURL%5D%0D%0A%0D%0AWhat%20I%E2%80%99d%20like%20help%20with%3A%0D%0A%5BBrief%20description%20of%20project%20or%20needs%5D%0D%0A%0D%0AEstimated%20budget%20range%3A%20%5BBudget%5D%0D%0AIdeal%20timeline%3A%20%5BTimeline%5D%0D%0A%0D%0AHow%20did%20you%20hear%20about%20Dev101Labs%3F%0D%0A%5BReferral%20or%20source%5D%0D%0A%0D%0A-%0D%0A%5BYour%20Name%5D" className="bg-darkNavy text-electricCyan px-10 py-4 rounded-full font-semibold text-xl hover:bg-offWhite transition-colors inline-flex items-center justify-center">
+              Book a Strategy Call <ArrowRight className="ml-2" size={20} />
+            </a>
           </motion.div>
         </section>
       </div>
