@@ -133,8 +133,6 @@ export default function PortfolioPage() {
                 }
               })();
 
-              const Icon = sectorIcon;
-
               return (
                 <motion.article
                   key={project.name}
@@ -142,9 +140,8 @@ export default function PortfolioPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.35 }}
                   transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
-                  className="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-950/70 px-6 py-6 sm:px-7 sm:py-7 lg:px-8 lg:py-8 shadow-[0_18px_60px_-30px_rgba(0,0,0,0.9)] hover:border-teal-400/70 hover:bg-slate-950 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-400"
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.4, type: "spring", stiffness: 260, damping: 24 }}
+                  className="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-950/70 px-6 py-6 sm:px-7 sm:py-7 lg:px-8 lg:py-8 shadow-[0_18px_60px_-30px_rgba(0,0,0,0.9)] hover:border-teal-400/70 hover:bg-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-400"
+                  whileHover={{ y: -4, transition: { duration: 0.4, type: "spring", stiffness: 260, damping: 24 } }}
                 >
                   {/* Soft glow background */}
                   <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/10 via-sky-500/5 to-purple-500/0 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-300" />
