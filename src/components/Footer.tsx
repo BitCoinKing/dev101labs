@@ -5,7 +5,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-darkNavy text-offWhite py-12 px-6 md:px-12">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 pt-16 pb-10 text-neutral-300 px-6 md:px-12">
+      {/* Top glow divider */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+
+      {/* Radial glow behind footer */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.12),transparent_70%)]" />
+
+      {/* Additional top fade glow */}
+      <div className="pointer-events-none absolute -top-10 inset-x-0 h-32 -z-10 bg-gradient-to-b from-cyan-500/10 via-emerald-500/10 to-transparent blur-2xl" />
+
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Brand + Mission */}
         <div>
