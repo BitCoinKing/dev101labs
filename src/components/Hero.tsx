@@ -33,6 +33,36 @@ const AUDIENCES = [
   },
 ];
 
+const STRATEGY_EMAIL_TO = "info@dev101labs.com";
+const STRATEGY_EMAIL_SUBJECT = "Strategy Call Request – Dev101Labs Website";
+const STRATEGY_EMAIL_BODY = `
+Hi Dev101Labs team,
+
+I'd like to schedule a strategy call to discuss working together.
+
+Name:
+Company / Organization:
+Role / Title:
+Website or Project URL (if any):
+
+What do you need help with?
+- Government RFQ/RFP & technology solutions
+- SaaS / product build
+- Real estate media & property websites
+- Branding, UX, or campaign strategy
+- Other (please describe)
+
+Ideal timeline:
+Approximate budget range:
+Anything else we should know before the call?
+
+Thank you!
+`;
+
+const strategyCallMailto = `mailto:${STRATEGY_EMAIL_TO}?subject=${encodeURIComponent(
+  STRATEGY_EMAIL_SUBJECT
+)}&body=${encodeURIComponent(STRATEGY_EMAIL_BODY)}`;
+
 export default function Hero() {
   const [audienceIndex, setAudienceIndex] = useState(0);
 
@@ -119,13 +149,13 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center lg:justify-start">
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-sm font-medium text-neutral-900 shadow-sm transition hover:bg-neutral-200"
+            <a
+              href={strategyCallMailto}
+              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-sm font-medium text-neutral-900 shadow-lg hover:bg-slate-100 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 transition"
             >
               Book a Strategy Call
               <span className="ml-2 text-lg">→</span>
-            </Link>
+            </a>
             <Link
               href="#services"
               className="inline-flex items-center justify-center rounded-full border border-neutral-700 px-6 py-2.5 text-sm font-medium text-neutral-100/90 hover:border-cyan-400 hover:text-cyan-200"
