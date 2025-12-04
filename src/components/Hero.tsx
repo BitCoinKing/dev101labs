@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const container = {
@@ -14,7 +15,34 @@ const container = {
   },
 };
 
+const AUDIENCES = [
+  {
+    id: "gov",
+    label: "Government agencies & public sector teams",
+    tag: "Government Contract Facilitation",
+  },
+  {
+    id: "saas",
+    label: "SaaS founders & product teams",
+    tag: "Full-Stack Platforms & Apps",
+  },
+  {
+    id: "re",
+    label: "Real estate brands & top producers",
+    tag: "Media, Websites & Campaigns",
+  },
+];
+
 export default function Hero() {
+  const [audienceIndex, setAudienceIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAudienceIndex((prev) => (prev + 1) % AUDIENCES.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-neutral-950">
       {/* Animated background layer */}
@@ -49,21 +77,46 @@ export default function Hero() {
           animate="show"
           className="max-w-xl space-y-6 text-center lg:text-left"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/70 px-3 py-1 text-xs text-neutral-400 backdrop-blur">
-            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            <span>Technology, strategy, and creative for high-stakes work.</span>
-          </div>
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase text-emerald-300">
+            Technology, strategy, and media for high-stakes work
+          </p>
 
-          <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            We Supply Government Agencies
-            <span className="block">With Technology Solutions They Need.</span>
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl leading-[1.05]">
+            We Build Technology, Media, and Strategy
+            <br />
+            That Win Contracts, Customers, and Listings.
           </h1>
 
-          <p className="text-sm leading-relaxed text-neutral-400 sm:text-base">
-            Dev101Labs secures partnerships with government entities, bidding
-            and winning contracts to deliver the technology infrastructure,
-            digital transformations, and strategic solutions agencies require.
+          <p className="mt-6 max-w-xl text-sm text-neutral-300 md:text-base">
+            Dev101Labs partners with government agencies, SaaS teams, and real estate
+            professionals to design, build, and launch the systems, experiences, and
+            campaigns that actually move the needle.
           </p>
+
+          <div className="mt-6">
+            <div className="inline-flex items-center gap-3 rounded-full border border-neutral-700/80 bg-neutral-900/80 px-4 py-2 text-xs text-neutral-200 shadow-[0_10px_40px_rgba(0,0,0,0.7)] backdrop-blur">
+              <span className="rounded-full bg-emerald-500/15 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                Who we build for
+              </span>
+
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={AUDIENCES[audienceIndex].id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="text-xs sm:text-sm text-neutral-100"
+                >
+                  {AUDIENCES[audienceIndex].label}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+
+            <p className="mt-2 text-[11px] text-neutral-400">
+              {AUDIENCES[audienceIndex].tag}
+            </p>
+          </div>
 
           <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center lg:justify-start">
             <Link
