@@ -99,18 +99,20 @@ export default function PortfolioPage() {
   return (
     <main className="min-h-screen bg-black text-white">
       {/* Header */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="text-center space-y-6">
+      <section className="w-full py-10 sm:py-14 lg:py-16 bg-black">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Our Portfolio & Case Studies
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto">
+          <p className="mt-3 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto">
             Selected digital products, platforms, and campaigns we've helped bring to life.
           </p>
         </div>
+      </section>
 
-        {/* Grid of projects */}
-        <div className="mt-16 grid gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Cards Grid */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8 lg:mt-10">
+        <div className="grid gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {portfolioProjects.map((project, index) => {
               const primarySector = project.sector[0];
 
@@ -209,7 +211,7 @@ export default function PortfolioPage() {
               );
             })}
           </div>
-      </section>
+        </div>
     </main>
   );
 };
