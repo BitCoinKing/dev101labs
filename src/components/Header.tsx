@@ -53,16 +53,13 @@ export default function Header() {
           <Link href="/about" className="hover:text-white">
             About
           </Link>
-          <Link href="/contact" className="hover:text-white">
-            Contact
-          </Link>
 
-          <Link
-            href="/contact"
+          <a
+            href="mailto:info@dev101labs.com?subject=New%20Strategy%20Call%20Inquiry&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AWebsite%3A%20%5BURL%5D%0D%0A%0D%0AWhat%20I%E2%80%99d%20like%20help%20with%3A%0D%0A%5BBrief%20description%20of%20project%20or%20needs%5D%0D%0A%0D%0AEstimated%20budget%20range%3A%20%5BBudget%5D%0D%0AIdeal%20timeline%3A%20%5BTimeline%5D%0D%0A%0D%0AHow%20did%20you%20hear%20about%20Dev101Labs%3F%0D%0A%5BReferral%20or%20source%5D%0D%0A%0D%0A-%0D%0A%5BYour%20Name%5D"
             className="rounded-full border border-neutral-700 px-4 py-1.5 text-neutral-200 hover:border-cyan-400 hover:text-cyan-300 transition"
           >
             Book a Strategy Call
-          </Link>
+          </a>
         </nav>
 
         {/* MOBILE MENU ICON */}
@@ -82,14 +79,13 @@ export default function Header() {
           <Link href="/real-estate">Real Estate Media</Link>
           <Link href="/portfolio">Portfolio</Link>
           <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
 
-          <Link
-            href="/contact"
+          <a
+            href="mailto:info@dev101labs.com?subject=New%20Strategy%20Call%20Inquiry&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AWebsite%3A%20%5BURL%5D%0D%0A%0D%0AWhat%20I%E2%80%99d%20like%20help%20with%3A%0D%0A%5BBrief%20description%20of%20project%20or%20needs%5D%0D%0A%0D%0AEstimated%20budget%20range%3A%20%5BBudget%5D%0D%0AIdeal%20timeline%3A%20%5BTimeline%5D%0D%0A%0D%0AHow%20did%20you%20hear%20about%20Dev101Labs%3F%0D%0A%5BReferral%20or%20source%5D%0D%0A%0D%0A-%0D%0A%5BYour%20Name%5D"
             className="block rounded-full border border-neutral-700 px-4 py-2 text-center mt-4 hover:border-cyan-400 hover:text-cyan-300"
           >
             Book a Strategy Call
-          </Link>
+          </a>
         </div>
       )}
     </header>

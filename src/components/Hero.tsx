@@ -35,29 +35,7 @@ const AUDIENCES = [
 
 const STRATEGY_EMAIL_TO = "info@dev101labs.com";
 const STRATEGY_EMAIL_SUBJECT = "Strategy Call Request – Dev101Labs Website";
-const STRATEGY_EMAIL_BODY = `
-Hi Dev101Labs team,
-
-I'd like to schedule a strategy call to discuss working together.
-
-Name:
-Company / Organization:
-Role / Title:
-Website or Project URL (if any):
-
-What do you need help with?
-- Government RFQ/RFP & technology solutions
-- SaaS / product build
-- Real estate media & property websites
-- Branding, UX, or campaign strategy
-- Other (please describe)
-
-Ideal timeline:
-Approximate budget range:
-Anything else we should know before the call?
-
-Thank you!
-`;
+const STRATEGY_EMAIL_BODY = `Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AWebsite%3A%20%5BURL%5D%0D%0A%0D%0AWhat%20I%E2%80%99d%20like%20help%20with%3A%0D%0A%5BBrief%20description%20of%20project%20or%20needs%5D%0D%0A%0D%0AEstimated%20budget%20range%3A%20%5BBudget%5D%0D%0AIdeal%20timeline%3A%20%5BTimeline%5D%0D%0A%0D%0AHow%20did%20you%20hear%20about%20Dev101Labs%3F%0D%0A%5BReferral%20or%20source%5D%0D%0A%0D%0A-%0D%0A%5BYour%20Name%5D`;
 
 const strategyCallMailto = `mailto:${STRATEGY_EMAIL_TO}?subject=${encodeURIComponent(
   STRATEGY_EMAIL_SUBJECT
