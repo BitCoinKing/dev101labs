@@ -6,7 +6,11 @@ export type PillarKey =
   | "gov"
   | "fullstack"
   | "growth"
-  | "realEstate";
+  | "realEstate"
+  | "why-strategy"
+  | "why-compliance"
+  | "why-execution"
+  | "why-synergy";
 
 export function useServiceModal() {
   const [active, setActive] = useState<PillarKey | null>(null);
