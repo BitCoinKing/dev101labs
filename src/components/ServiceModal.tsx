@@ -13,6 +13,9 @@ type ServiceDetail = {
   bullets?: string[];
   outcomes?: string[];
   idealFor?: string[];
+  audience?: string;
+  timeline?: string;
+  includes?: string[];
 };
 
 type ServiceModalProps = {
@@ -86,10 +89,34 @@ export function ServiceModal({ open, onClose, service }: ServiceModalProps) {
             </p>
           )}
 
+          {/* Audience */}
+          {service.audience && (
+            <p className="text-slate-200 leading-relaxed mb-6 bg-slate-800/30 rounded-lg p-4 border-l-4 border-emerald-400">
+              {service.audience}
+            </p>
+          )}
+
           {/* Intro */}
-          <p className="text-slate-200 leading-relaxed mb-6">
-            {service.intro}
-          </p>
+          {(service.intro && !service.audience) && (
+            <p className="text-slate-200 leading-relaxed mb-6">
+              {service.intro}
+            </p>
+          )}
+
+          {/* Includes */}
+          {service.includes && service.includes.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-lg font-medium text-white mb-3">What you get:</h3>
+              <ul className="space-y-2">
+                {service.includes.map((include, index) => (
+                  <li key={index} className="flex items-start gap-2 text-slate-200">
+                    <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
+                    {include}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Bullets */}
           {service.bullets && service.bullets.length > 0 && (

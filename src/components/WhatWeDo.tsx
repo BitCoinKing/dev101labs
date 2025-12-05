@@ -8,6 +8,8 @@ import {
   Building2,
   ArrowRight,
 } from "lucide-react";
+import { useServiceModal, PillarKey } from "../hooks/useServiceModal";
+import { ServiceModal } from "./ui/ServiceModal";
 
 type Service = {
   name: string;
@@ -69,90 +71,408 @@ const services: Service[] = [
 ];
 
 export function WhatWeDoSection() {
+  const { active, open, close } = useServiceModal();
+
   return (
-    <section
-      id="services"
-      className="bg-neutral-950 py-16 md:py-24 lg:py-28"
-    >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="mb-12 flex flex-col items-center text-center gap-3">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-cyan-400 uppercase">
-            Services
-          </p>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
-            What We Do
-          </h2>
-          <p className="max-w-2xl text-sm md:text-base text-neutral-400">
-            Dev101Labs combines government expertise, full-stack engineering,
-            growth marketing, and world-class real estate media to deliver
-            government projects, build SaaS platforms, and market properties.
-          </p>
-        </div>
+    <>
+      <section
+        id="services"
+        className="bg-neutral-950 py-16 md:py-24 lg:py-28"
+      >
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Section header */}
+          <div className="mb-12 flex flex-col items-center text-center gap-3">
+            <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-cyan-400 uppercase">
+              Services
+            </p>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white">
+              What We Do
+            </h2>
+            <p className="max-w-2xl text-sm md:text-base text-neutral-400">
+              Dev101Labs combines government expertise, full-stack engineering,
+              growth marketing, and world-class real estate media to deliver
+              government projects, build SaaS platforms, and market properties.
+            </p>
+          </div>
 
-        {/* Cards grid */}
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.article
-                key={service.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.35, delay: index * 0.08 }}
-                className="group h-full"
-              >
-                {/* Gradient border wrapper */}
-                <div className="relative h-full rounded-3xl bg-gradient-to-br from-cyan-500/30 via-neutral-800 to-neutral-900 p-[1px]">
-                  <div className="flex h-full flex-col justify-between rounded-3xl bg-neutral-950/95 px-5 py-6 md:px-6 md:py-7 transition-transform duration-200 group-hover:-translate-y-1 group-hover:bg-neutral-900/95">
-                    {/* Icon + tag */}
-                    <div className="mb-5 flex items-center justify-between gap-3">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <span className="text-[10px] md:text-xs font-medium uppercase tracking-wide text-neutral-500">
-                        {service.tag}
-                      </span>
+          {/* Cards grid */}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {/* Government Contract Facilitation */}
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: 0 * 0.08 }}
+              className="group h-full"
+            >
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-cyan-500/30 via-neutral-800 to-neutral-900 p-[1px]">
+                <div className="flex h-full flex-col justify-between rounded-3xl bg-neutral-950/95 px-5 py-6 md:px-6 md:py-7 transition-transform duration-200 group-hover:-translate-y-1 group-hover:bg-neutral-900/95">
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
+                      <Briefcase className="h-5 w-5" />
                     </div>
-
-                    {/* Title + description */}
-                    <div className="space-y-2">
-                      <h3 className="text-lg md:text-xl font-semibold text-white">
-                        {service.name}
-                      </h3>
-                      <p className="text-sm text-neutral-400">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Bulleted micro-points */}
-                    <ul className="mt-4 space-y-2 text-xs text-neutral-500">
-                      {service.points.map((point) => (
-                        <li
-                          key={point}
-                          className="flex items-start gap-2"
-                        >
-                          <span className="mt-[6px] h-[3px] w-[3px] rounded-full bg-cyan-500" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* CTA line */}
-                    <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-cyan-400">
-                      <span>Learn more</span>
-                      <ArrowRight className="h-3 w-3 transition-transform duration-150 group-hover:translate-x-1" />
-                    </div>
+                    <span className="text-[10px] md:text-xs font-medium uppercase tracking-wide text-neutral-500">
+                      Public Sector
+                    </span>
                   </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                      Government Contract Facilitation
+                    </h3>
+                    <p className="text-sm text-neutral-400">
+                      We bid and win government contracts, delivering technology solutions to agencies nationwide.
+                    </p>
+                  </div>
+                  <ul className="mt-4 space-y-2 text-xs text-neutral-500">
+                    {["RFQ / RFP bidding and winning", "Technology implementation and delivery", "Ongoing support and compliance maintenance"].map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span className="mt-[6px] h-[3px] w-[3px] rounded-full bg-cyan-500" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => open("gov")}
+                    className="mt-6 inline-flex items-center text-sm font-medium text-emerald-300 hover:text-emerald-200"
+                  >
+                    Learn more
+                    <ArrowRight className="ml-1 text-lg" />
+                  </button>
                 </div>
-              </motion.article>
-            );
-          })}
+              </div>
+            </motion.article>
+
+            {/* Full-Stack Development */}
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: 1 * 0.08 }}
+              className="group h-full"
+            >
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-cyan-500/30 via-neutral-800 to-neutral-900 p-[1px]">
+                <div className="flex h-full flex-col justify-between rounded-3xl bg-neutral-950/95 px-5 py-6 md:px-6 md:py-7 transition-transform duration-200 group-hover:-translate-y-1 group-hover:bg-neutral-900/95">
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
+                      <Code2 className="h-5 w-5" />
+                    </div>
+                    <span className="text-[10px] md:text-xs font-medium uppercase tracking-wide text-neutral-500">
+                      Products & Platforms
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                      Full-Stack Development
+                    </h3>
+                    <p className="text-sm text-neutral-400">
+                      Custom websites, web apps, mobile applications, scalable SaaS platforms, and cloud systems.
+                    </p>
+                  </div>
+                  <ul className="mt-4 space-y-2 text-xs text-neutral-500">
+                    {["Next.js / React frontends", "API integrations & automation", "Secure, scalable architectures"].map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span className="mt-[6px] h-[3px] w-[3px] rounded-full bg-cyan-500" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => open("fullstack")}
+                    className="mt-6 inline-flex items-center text-sm font-medium text-emerald-300 hover:text-emerald-200"
+                  >
+                    Learn more
+                    <ArrowRight className="ml-1 text-lg" />
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+
+            {/* Digital Marketing & Growth */}
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: 2 * 0.08 }}
+              className="group h-full"
+            >
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-cyan-500/30 via-neutral-800 to-neutral-900 p-[1px]">
+                <div className="flex h-full flex-col justify-between rounded-3xl bg-neutral-950/95 px-5 py-6 md:px-6 md:py-7 transition-transform duration-200 group-hover:-translate-y-1 group-hover:bg-neutral-900/95">
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
+                      <Rocket className="h-5 w-5" />
+                    </div>
+                    <span className="text-[10px] md:text-xs font-medium uppercase tracking-wide text-neutral-500">
+                      Demand Generation
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                      Digital Marketing & Growth
+                    </h3>
+                    <p className="text-sm text-neutral-400">
+                      Targeted advertising, lead generation funnels, conversion optimization, and brand identity.
+                    </p>
+                  </div>
+                  <ul className="mt-4 space-y-2 text-xs text-neutral-500">
+                    {["Facebook, Instagram, TikTok, Google Ads", "Landing pages & funnels built to convert", "Analytics, tracking, and optimization"].map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span className="mt-[6px] h-[3px] w-[3px] rounded-full bg-cyan-500" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => open("growth")}
+                    className="mt-6 inline-flex items-center text-sm font-medium text-emerald-300 hover:text-emerald-200"
+                  >
+                    Learn more
+                    <ArrowRight className="ml-1 text-lg" />
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+
+            {/* Real Estate Media & Websites */}
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: 3 * 0.08 }}
+              className="group h-full"
+            >
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-cyan-500/30 via-neutral-800 to-neutral-900 p-[1px]">
+                <div className="flex h-full flex-col justify-between rounded-3xl bg-neutral-950/95 px-5 py-6 md:px-6 md:py-7 transition-transform duration-200 group-hover:-translate-y-1 group-hover:bg-neutral-900/95">
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
+                      <Building2 className="h-5 w-5" />
+                    </div>
+                    <span className="text-[10px] md:text-xs font-medium uppercase tracking-wide text-neutral-500">
+                      Property & Listings
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                      Real Estate Media & Websites
+                    </h3>
+                    <p className="text-sm text-neutral-400">
+                      Custom realtor sites, IDX/MLS integration, professional photography, video, and virtual tours.
+                    </p>
+                  </div>
+                  <ul className="mt-4 space-y-2 text-xs text-neutral-500">
+                    {["High-performing agent & brokerage sites", "Cinematic photo, video, and drone media", "Virtual tours & property landing pages"].map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span className="mt-[6px] h-[3px] w-[3px] rounded-full bg-cyan-500" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => open("realEstate")}
+                    className="mt-6 inline-flex items-center text-sm font-medium text-emerald-300 hover:text-emerald-200"
+                  >
+                    Learn more
+                    <ArrowRight className="ml-1 text-lg" />
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Modal renderer */}
+      <ServiceModalRoot active={active} onClose={close} />
+    </>
   );
 }
+
+type ServiceModalRootProps = {
+  active: PillarKey | null;
+  onClose: () => void;
+};
+
+const ServiceModalRoot = ({ active, onClose }: ServiceModalRootProps) => {
+  if (!active) return null;
+
+  switch (active) {
+    case "gov":
+      return (
+        <ServiceModal
+          open
+          onClose={onClose}
+          title="Government Contract Facilitation"
+          subtitle="From SAM.gov registration to award-winning proposals, Dev101Labs helps agencies and vendors move with confidence."
+        >
+          <p>
+            We partner with agencies and qualified vendors to make the
+            government contracting process less chaotic and more predictable.
+            Whether you're entering the market for the first time or scaling an
+            existing contracts practice, we help you get contract-ready and
+            competitive.
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <span className="font-semibold">Readiness & positioning.</span>{" "}
+              Opportunity mapping, capability narrative, and past-performance
+              packaging so you stand out for the right reasons.
+            </li>
+            <li>
+              <span className="font-semibold">RFQ/RFP strategy.</span> Win-room
+              style working sessions to decode requirements, build a clear win
+              theme, and align technical, pricing, and compliance.
+            </li>
+            <li>
+              <span className="font-semibold">Proposal development.</span> We
+              support storyboarding, outline development, pink/red team
+              reviews, and production-ready proposal documents.
+            </li>
+            <li>
+              <span className="font-semibold">Implementation support.</span>{" "}
+              When you win, we help translate the awarded scope into technology
+              roadmaps, delivery plans, and dashboards leadership can trust.
+            </li>
+          </ul>
+          <p className="pt-2 text-sm text-emerald-300">
+            Ideal for: agencies, primes, and small businesses who want a
+            strategic partner across both bids and delivery.
+          </p>
+        </ServiceModal>
+      );
+
+    case "fullstack":
+      return (
+        <ServiceModal
+          open
+          onClose={onClose}
+          title="Full-Stack Development"
+          subtitle="Modern web apps, SaaS platforms, and internal tools built on Next.js, React, and robust cloud backends."
+        >
+          <p>
+            Dev101Labs designs and builds full-stack systems that feel premium
+            on the surface and stay maintainable under the hood. We focus on
+            clear architectures, strong security practices, and fast user
+            experiences.
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <span className="font-semibold">Product & UX discovery.</span>{" "}
+              Workshops to map use cases, roles, and workflows before a single
+              line of code is written.
+            </li>
+            <li>
+              <span className="font-semibold">Modern frontends.</span> Next.js,
+              React, TypeScript, motion-driven UI, and responsive design tuned
+              for both mobile and desktop.
+            </li>
+            <li>
+              <span className="font-semibold">Scalable backends.</span> API
+              design, authentication, role-based access, integrations with CRMs,
+              payments, and third-party providers.
+            </li>
+            <li>
+              <span className="font-semibold">Delivery & hand-off.</span>{" "}
+              Environments, documentation, and training so your team can
+              operate and extend the platform with confidence.
+            </li>
+          </ul>
+          <p className="pt-2 text-sm text-emerald-300">
+            Ideal for: SaaS products, internal dashboards, customer portals,
+            and data-rich web applications.
+          </p>
+        </ServiceModal>
+      );
+
+    case "growth":
+      return (
+        <ServiceModal
+          open
+          onClose={onClose}
+          title="Digital Marketing & Growth"
+          subtitle="Performance-focused campaigns and funnels that connect strategy, creative, and analytics."
+        >
+          <p>
+            We help you move beyond random acts of marketing and into a
+            repeatable growth engine. Every campaign ties into a clear funnel
+            and a reporting view that leaders actually use.
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <span className="font-semibold">Audience & offer clarity.</span>{" "}
+              Identify who you're truly serving, what they care about, and how
+              to position your offer in language that converts.
+            </li>
+            <li>
+              <span className="font-semibold">Channel strategy.</span> Paid and
+              organic plays across Meta, TikTok, Google, LinkedIn, and email,
+              matched to your budget and sales cycle.
+            </li>
+            <li>
+              <span className="font-semibold">Funnels & landing pages.</span>{" "}
+              High-converting landing pages, lead magnets, and nurture sequences
+              wired to your CRM or marketing stack.
+            </li>
+            <li>
+              <span className="font-semibold">Analytics & iteration.</span>{" "}
+              Dashboards, cohort views, and testing plans so you can scale what
+              works and cut what doesn't.
+            </li>
+          </ul>
+          <p className="pt-2 text-sm text-emerald-300">
+            Ideal for: founders, agencies, and teams who want marketing that is
+            measurable, accountable, and aligned to revenue.
+          </p>
+        </ServiceModal>
+      );
+
+    case "realEstate":
+      return (
+        <ServiceModal
+          open
+          onClose={onClose}
+          title="Real Estate Media & Websites"
+          subtitle="High-impact digital experiences that make every property and every agent look like a top producer."
+        >
+          <p>
+            Real estate is visual, emotional, and time-sensitive. We combine
+            premium media with fast, IDX-ready websites so your properties and
+            agents look as strong online as they do in person.
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <span className="font-semibold">Custom realtor & brokerage sites.</span>{" "}
+              Brand-matched, mobile-optimized sites with IDX/MLS integration,
+              CRM connections, and built-in lead capture.
+            </li>
+            <li>
+              <span className="font-semibold">Property marketing pages.</span>{" "}
+              Dedicated single-property sites with photo galleries, video,
+              floor plans, lifestyle copy, and clear calls to book a showing.
+            </li>
+            <li>
+              <span className="font-semibold">Cinematic media production.</span>{" "}
+              Photography, aerial drone video, and vertical-format clips ready
+              for social and paid campaigns.
+            </li>
+            <li>
+              <span className="font-semibold">Analytics & campaign support.</span>{" "}
+              Tracking on listings, lead forms, and call-to-action buttons so
+              you can see which marketing actually moves contracts.
+            </li>
+          </ul>
+          <p className="pt-2 text-sm text-emerald-300">
+            Ideal for: top agents, boutique brokerages, and developers who want
+            their listings to feel like a luxury brand experience.
+          </p>
+        </ServiceModal>
+      );
+
+    default:
+      return null;
+  }
+};
 
 export default WhatWeDoSection;

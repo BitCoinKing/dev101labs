@@ -21,6 +21,9 @@ type ServiceDetail = {
   bullets?: string[];
   outcomes?: string[];
   idealFor?: string[];
+  audience?: string;
+  timeline?: string;
+  includes?: string[];
 };
 
 const SERVICE_DETAILS: ServiceDetail[] = [
@@ -170,6 +173,85 @@ const SERVICE_DETAILS: ServiceDetail[] = [
       "Products that need to plug into an existing enterprise stack.",
       "Organizations planning a phased modernization instead of a big-bang rewrite.",
     ],
+  },
+
+  // --- Real Estate Media ---
+  {
+    id: "real-estate-custom-sites",
+    category: "Real Estate Media · Websites",
+    title: "Custom Realtor & Brokerage Websites",
+    tagline: "High-performing realty websites with IDX/MLS integration, CRM connections, and mobile-first lead capture.",
+    intro: "Brokerages, teams, and top producers who want their site to actually generate listings and buyers.",
+    includes: [
+      "Homepage + core pages (About, Services, Contact, Lead Capture).",
+      "IDX/MLS search + listing detail templates.",
+      "Blog / content hub for market updates and guides.",
+      "Analytics, basic funnel tracking, and performance optimization."
+    ],
+    outcomes: [
+      "Clean, modern listing-first design that looks premium on desktop, tablet, and mobile.",
+      "Seamless IDX/MLS integration with property search, saved searches, and listing alerts.",
+      "Lead flows that push directly into your CRM (HubSpot, Follow Up Boss, LionDesk, etc.).",
+      "On-site SEO foundations to rank locally for neighborhoods, communities, and key property terms."
+    ],
+    idealFor: [
+      "Agents who have outgrown their template website.",
+      "Teams that want one central hub for listings, media, and testimonials.",
+      "Brokerages launching or rebranding in a competitive market."
+    ],
+    timeline: "Typical build: 4–8 weeks depending on content, integrations, and approvals.",
+  },
+
+  {
+    id: "real-estate-landing-pages",
+    category: "Real Estate Media · Marketing",
+    title: "High-Converting Property Marketing Pages",
+    tagline: "Single-property websites that combine cinematic visuals, detailed info, and clear calls to action—modeled after showcase experiences.",
+    intro: "Agents and teams who want every special listing to have its own digital 'movie trailer' page.",
+    includes: [
+      "Hero section with price, stats, and quick-glance highlights.",
+      "Photo galleries, embedded video / 3D tour, and downloadable brochure (optional).",
+      "Map, lifestyle highlights, and amenity sections.",
+      "Lead capture block with 'Request private showing' and 'Download info packet' options."
+    ],
+    outcomes: [
+      "A dedicated landing page per property that you can use in ads, email, and social.",
+      "Integrated lead capture forms that send inquiries straight to your inbox or CRM.",
+      "Support for video, drone reels, virtual tours, floor plans, and neighborhood highlights.",
+      "Consistent, premium layout that keeps your brand front and center while highlighting the listing."
+    ],
+    idealFor: [
+      "Luxury and unique homes that deserve more than a standard portal listing.",
+      "Agents who do heavy social / ad campaigns and need somewhere powerful to send traffic.",
+      "New developments, pre-sales, or builder partnerships."
+    ],
+    timeline: "Typical build: 3–7 days per property, depending on assets (photos, video, copy) provided.",
+  },
+
+  {
+    id: "real-estate-media-production",
+    category: "Real Estate Media · Production",
+    title: "Professional Media Production for Listings",
+    tagline: "Cinematic photography, video, drone, and virtual tours designed to make every listing look like a magazine cover.",
+    intro: "Agents, teams, and developers who want their online presence to match the quality of the homes they sell.",
+    includes: [
+      "HDR + editorial-style photography for MLS and marketing.",
+      "Cinematic highlight video (30–90 seconds) cut for web and social.",
+      "Aerial / drone clips and hero stills (where permitted).",
+      "Optional Matterport or 3D tour integrations."
+    ],
+    outcomes: [
+      "Listing photography that feels editorial, not just documentary.",
+      "Short-form social cuts (Reels/TikTok) that drive attention to your property pages.",
+      "Aerial and neighborhood storytelling that sells lifestyle, not just square footage.",
+      "Consistent color, branding, and titling across all your media assets."
+    ],
+    idealFor: [
+      "Agents who want a repeatable media package for each listing.",
+      "Teams that bundle media with their listing presentations as a clear value-add.",
+      "Developers and builders looking to showcase multiple phases or communities."
+    ],
+    timeline: "Typical delivery: 48–72 hours after shoot (photo + video), with rush options available.",
   },
 ];
 
@@ -377,16 +459,19 @@ export default function ServicesPage() {
               icon={<Globe2 className="h-5 w-5" />}
               title="Custom Realtor Websites"
               description="High-performing websites with IDX/MLS integration, CRM connections, and mobile-optimized lead capture."
+              onLearnMore={() => handleOpenService("real-estate-custom-sites")}
             />
             <ServiceCard
               icon={<MapPinned className="h-5 w-5" />}
               title="Property Marketing Pages"
               description="Dedicated landing pages for individual listings with virtual tours, floor plans, and conversion optimization."
+              onLearnMore={() => handleOpenService("real-estate-landing-pages")}
             />
             <ServiceCard
               icon={<Camera className="h-5 w-5" />}
               title="Professional Media Production"
               description="Photography, cinematic videography, drone footage, and virtual tours to showcase properties at their best."
+              onLearnMore={() => handleOpenService("real-estate-media-production")}
             />
           </div>
         </section>
