@@ -106,17 +106,20 @@ export default function Header() {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="
-              fixed inset-0 z-[200]
-              md:hidden flex flex-col
-              bg-neutral-900/80      /* strong tint */
-              backdrop-blur-2xl      /* frosted glass effect */
-              supports-backdrop-blur:bg-neutral-900/70
-              border-t border-neutral-800
+              fixed inset-0 
+              z-[9999]           /* ensures menu is ALWAYS on top */
+              md:hidden flex flex-col 
+              bg-neutral-900/85  /* glass tint */
+              backdrop-blur-2xl  /* frosted look */
+              supports-backdrop-blur:bg-neutral-900/75
             "
             onClick={closeMobileNav}
           >
             {/* Top bar */}
-            <div className="flex items-center justify-between px-6 py-4 bg-neutral-900/90 backdrop-blur-xl border-b border-neutral-800">
+            <div className="flex items-center justify-between px-6 py-4 
+                            bg-neutral-900/90 backdrop-blur-xl 
+                            border-b border-neutral-800 
+                            z-[10000] relative">
               {/* Logo */}
               <Link
                 href="/"
