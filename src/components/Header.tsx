@@ -108,18 +108,13 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[80] flex md:hidden"
           >
-            {/* Solid black frosted glass background - multiple layers */}
+            {/* Dark solid background overlay */}
             <div
-              className="absolute inset-0 bg-black"
+              className="absolute inset-0 bg-slate-950"
               onClick={() => setIsOpen(false)}
-              style={{
-                background: 'linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(15,15,15,0.99) 50%, rgba(0,0,0,1) 100%)',
-                backdropFilter: 'blur(40px)',
-                WebkitBackdropFilter: 'blur(40px)'
-              }}
             />
 
-            {/* Right-side dropdown menu container */}
+            {/* Right-side dropdown menu with solid dark background */}
             <motion.nav
               initial={{ y: '-100%', x: '100%' }}
               animate={{ y: 0, x: 0 }}
@@ -130,22 +125,16 @@ export default function Header() {
                 damping: 30,
                 mass: 0.8
               }}
-              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col shadow-2xl border-l border-white/10"
+              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col bg-slate-900 border-l border-slate-700"
               style={{
                 paddingTop: 'calc(env(safe-area-inset-top) + 1rem)',
                 paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)',
                 paddingRight: 'calc(env(safe-area-inset-right) + 1rem)'
               }}
             >
-              {/* Header section with individual glass background */}
+              {/* Header section */}
               <div 
-                className="flex items-center justify-between mb-6 px-4 rounded-2xl border border-white/10"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                }}
+                className="flex items-center justify-between mb-6 px-4"
               >
                 <span className="text-xl font-bold tracking-tight text-white">
                   Dev101Labs
@@ -161,15 +150,9 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Navigation links section with individual glass background */}
+              {/* Navigation links section */}
               <nav 
-                className="flex-1 flex flex-col justify-center px-4 space-y-3 rounded-2xl border border-white/10"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                }}
+                className="flex-1 flex flex-col justify-center px-4 space-y-3"
               >
                 <Link
                   href="/services"
@@ -208,15 +191,9 @@ export default function Header() {
                 </Link>
               </nav>
 
-              {/* CTA section with individual glass background */}
+              {/* CTA section */}
               <div 
-                className="px-4 pt-6 space-y-4 rounded-2xl border border-white/10"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                }}
+                className="px-4 pt-6 space-y-4"
               >
                 <a
                   href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AType%20of%20work%20I%27m%20interested%20in%3A%20%5BGovernment%20contracts%20%2F%20SaaS%20platform%20%2F%20Real%20estate%20media%20%2F%20Other%5D%0D%0AEstimated%20timeline%3A%20%5BTimeline%5D%0D%0ABudget%20range%3A%20%5BBudget%5D%0D%0A%0D%0ABrief%20description%20of%20the%20project%3A%0D%5BProject%20details%5D%0D%0A%0D%0AThank%20you%21"
