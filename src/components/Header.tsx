@@ -100,112 +100,100 @@ export default function Header() {
       {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Dark overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/95 backdrop-blur md:hidden"
-              onClick={closeMobileNav}
-            />
+          <motion.nav
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-50 bg-black md:hidden flex flex-col"
+            onClick={closeMobileNav}
+          >
+            {/* Top bar */}
+            <div className="flex items-center justify-between px-6 pt-4">
+              {/* Logo */}
+              <Link
+                href="/"
+                className="text-lg font-semibold text-white"
+                onClick={closeMobileNav}
+              >
+                Dev101Labs
+              </Link>
 
-            {/* Mobile nav panel */}
-            <motion.nav
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed inset-0 z-50 bg-black/95 backdrop-blur md:hidden"
-            >
-              {/* Top bar */}
-              <div className="flex items-center justify-between px-6 pt-4">
-                {/* Logo */}
+              {/* Close button */}
+              <button
+                onClick={closeMobileNav}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700/80 bg-neutral-900/90 text-slate-100 hover:bg-neutral-800 transition-colors"
+                aria-label="Close navigation"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Navigation content */}
+            <div className="mt-8 px-6 pb-8">
+              {/* Primary links */}
+              <div className="flex flex-col gap-4 text-lg font-medium text-slate-100">
                 <Link
-                  href="/"
-                  className="text-lg font-semibold text-white"
+                  href="/services"
                   onClick={closeMobileNav}
+                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
                 >
-                  Dev101Labs
+                  Services
                 </Link>
 
-                {/* Close button */}
-                <button
+                <Link
+                  href="/government"
                   onClick={closeMobileNav}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700/80 bg-neutral-900/90 text-slate-100 hover:bg-neutral-800 transition-colors"
-                  aria-label="Close navigation"
+                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
                 >
-                  <X size={20} />
-                </button>
+                  Government Solutions
+                </Link>
+
+                <Link
+                  href="/real-estate"
+                  onClick={closeMobileNav}
+                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                >
+                  Real Estate Media
+                </Link>
+
+                <Link
+                  href="/portfolio"
+                  onClick={closeMobileNav}
+                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                >
+                  Portfolio
+                </Link>
+
+                <Link
+                  href="/about"
+                  onClick={closeMobileNav}
+                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                >
+                  About
+                </Link>
               </div>
 
-              {/* Navigation content */}
-              <div className="mt-8 px-6 pb-8">
-                {/* Primary links */}
-                <div className="flex flex-col gap-4 text-lg font-medium text-slate-100">
-                  <Link
-                    href="/services"
-                    onClick={closeMobileNav}
-                    className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
-                  >
-                    Services
-                  </Link>
+              {/* Divider */}
+              <div className="my-8 h-px bg-slate-800/80" />
 
-                  <Link
-                    href="/government"
-                    onClick={closeMobileNav}
-                    className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
-                  >
-                    Government Solutions
-                  </Link>
+              {/* CTA Block */}
+              <div className="space-y-4">
+                <a
+                  href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Tell%20us%20about%20your%20project%2C%20timeline%2C%20and%20what%20a%20win%20looks%20like."
+                  className="w-full inline-flex items-center justify-center rounded-full bg-teal-500 py-3 text-base font-semibold text-black hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/30"
+                  onClick={closeMobileNav}
+                >
+                  Book a Strategy Call
+                </a>
 
-                  <Link
-                    href="/real-estate"
-                    onClick={closeMobileNav}
-                    className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
-                  >
-                    Real Estate Media
-                  </Link>
-
-                  <Link
-                    href="/portfolio"
-                    onClick={closeMobileNav}
-                    className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
-                  >
-                    Portfolio
-                  </Link>
-
-                  <Link
-                    href="/about"
-                    onClick={closeMobileNav}
-                    className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
-                  >
-                    About
-                  </Link>
-                </div>
-
-                {/* Divider */}
-                <div className="my-8 h-px bg-slate-800/80" />
-
-                {/* CTA Block */}
-                <div className="space-y-4">
-                  <a
-                    href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Tell%20us%20about%20your%20project%2C%20timeline%2C%20and%20what%20a%20win%20looks%20like."
-                    className="w-full inline-flex items-center justify-center rounded-full bg-teal-500 py-3 text-base font-semibold text-black hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/30"
-                    onClick={closeMobileNav}
-                  >
-                    Book a Strategy Call
-                  </a>
-
-                  <p className="text-center text-sm text-slate-400">
-                    Or email us directly at{" "}
-                    <span className="font-medium text-slate-200">info@dev101labs.com</span>
-                  </p>
-                </div>
+                <p className="text-center text-sm text-slate-400">
+                  Or email us directly at{" "}
+                  <span className="font-medium text-slate-200">info@dev101labs.com</span>
+                </p>
               </div>
-            </motion.nav>
-          </>
+            </div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>
