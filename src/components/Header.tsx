@@ -108,13 +108,18 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[80] flex md:hidden"
           >
-            {/* Full solid background */}
+            {/* Solid black frosted glass background - multiple layers */}
             <div
-              className="absolute inset-0 bg-slate-950 backdrop-blur-2xl"
+              className="absolute inset-0 bg-black"
               onClick={() => setIsOpen(false)}
+              style={{
+                background: 'linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(15,15,15,0.99) 50%, rgba(0,0,0,1) 100%)',
+                backdropFilter: 'blur(40px)',
+                WebkitBackdropFilter: 'blur(40px)'
+              }}
             />
 
-            {/* Right-side dropdown menu */}
+            {/* Right-side dropdown menu with enhanced frosted glass */}
             <motion.nav
               initial={{ y: '-100%', x: '100%' }}
               animate={{ y: 0, x: 0 }}
@@ -125,8 +130,12 @@ export default function Header() {
                 damping: 30,
                 mass: 0.8
               }}
-              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col bg-gradient-to-b from-slate-800 via-slate-900 to-black shadow-2xl border-l border-white/10"
+              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col shadow-2xl border-l border-white/10"
               style={{
+                background: 'linear-gradient(135deg, rgba(30,41,59,1) 0%, rgba(15,23,42,1) 50%, rgba(0,0,0,1) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05)',
                 paddingTop: 'calc(env(safe-area-inset-top) + 1rem)',
                 paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)',
                 paddingRight: 'calc(env(safe-area-inset-right) + 1rem)'
