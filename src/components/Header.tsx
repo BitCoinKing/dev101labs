@@ -108,9 +108,9 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[80] flex md:hidden"
           >
-            {/* Solid glass background */}
+            {/* Full solid background */}
             <div
-              className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-950/98 to-black/98 backdrop-blur-2xl"
+              className="absolute inset-0 bg-slate-950 backdrop-blur-2xl"
               onClick={() => setIsOpen(false)}
             />
 
@@ -125,7 +125,7 @@ export default function Header() {
                 damping: 30,
                 mass: 0.8
               }}
-              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col bg-gradient-to-b from-slate-800/90 via-slate-900/95 to-black/95 shadow-2xl border-l border-white/10"
+              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col bg-gradient-to-b from-slate-800 via-slate-900 to-black shadow-2xl border-l border-white/10"
               style={{
                 paddingTop: 'calc(env(safe-area-inset-top) + 1rem)',
                 paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)',
