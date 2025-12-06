@@ -105,11 +105,11 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-50 bg-black md:hidden flex flex-col"
+            className="fixed inset-0 z-[60] md:hidden flex flex-col bg-neutral-950/95 backdrop-blur-xl border-t border-neutral-800"
             onClick={closeMobileNav}
           >
             {/* Top bar */}
-            <div className="flex items-center justify-between px-6 pt-4">
+            <div className="flex items-center justify-between px-6 pt-4 pb-3 bg-neutral-950/95">
               {/* Logo */}
               <Link
                 href="/"
@@ -130,13 +130,13 @@ export default function Header() {
             </div>
 
             {/* Navigation content */}
-            <div className="mt-8 px-6 pb-8">
+            <div className="mt-6 flex-1 overflow-y-auto px-6 pb-8">
               {/* Primary links */}
-              <div className="flex flex-col gap-4 text-lg font-medium text-slate-100">
+              <div className="flex flex-col gap-3 text-base font-medium text-slate-100">
                 <Link
                   href="/services"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
                 >
                   Services
                 </Link>
@@ -144,7 +144,7 @@ export default function Header() {
                 <Link
                   href="/government"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
                 >
                   Government Solutions
                 </Link>
@@ -152,7 +152,7 @@ export default function Header() {
                 <Link
                   href="/real-estate"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
                 >
                   Real Estate Media
                 </Link>
@@ -160,7 +160,7 @@ export default function Header() {
                 <Link
                   href="/portfolio"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
                 >
                   Portfolio
                 </Link>
@@ -168,7 +168,7 @@ export default function Header() {
                 <Link
                   href="/about"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between py-2 text-slate-100 hover:text-teal-300 transition-colors"
+                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
                 >
                   About
                 </Link>
@@ -178,7 +178,7 @@ export default function Header() {
               <div className="my-8 h-px bg-slate-800/80" />
 
               {/* CTA Block */}
-              <div className="space-y-4">
+              <div className="mt-6 space-y-3">
                 <a
                   href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Tell%20us%20about%20your%20project%2C%20timeline%2C%20and%20what%20a%20win%20looks%20like."
                   className="w-full inline-flex items-center justify-center rounded-full bg-teal-500 py-3 text-base font-semibold text-black hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/30"
@@ -186,10 +186,9 @@ export default function Header() {
                 >
                   Book a Strategy Call
                 </a>
-
-                <p className="text-center text-sm text-slate-400">
+                <p className="text-center text-xs text-slate-400">
                   Or email us directly at{" "}
-                  <span className="font-medium text-slate-200">info@dev101labs.com</span>
+                  <span className="font-medium text-slate-100">info@dev101labs.com</span>
                 </p>
               </div>
             </div>
