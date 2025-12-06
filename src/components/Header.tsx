@@ -107,7 +107,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/95 backdrop-blur md:hidden"
               onClick={closeMobileNav}
             />
 
@@ -117,7 +117,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-50 bg-black/95 backdrop-blur md:hidden"
             >
               {/* Top bar */}
               <div className="flex items-center justify-between px-6 pt-4">
