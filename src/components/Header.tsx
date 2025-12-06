@@ -105,92 +105,109 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
-            className="fixed inset-0 z-[80] flex lg:hidden"
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[80] flex md:hidden"
+            style={{ 
+              paddingTop: 'env(safe-area-inset-top)',
+              paddingBottom: 'env(safe-area-inset-bottom)',
+              paddingLeft: 'env(safe-area-inset-left)',
+              paddingRight: 'env(safe-area-inset-right)'
+            }}
           >
-            {/* Dim + glass background behind the panel */}
+            {/* Optimized glass background for mobile performance */}
             <div
-              className="absolute inset-0 bg-slate-950/85 backdrop-blur-2xl"
+              className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-slate-950/75"
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Sliding glass panel */}
+            {/* Sliding glass panel optimized for mobile */}
             <motion.nav
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-              className="relative ml-auto flex h-full w-full max-w-sm flex-col border-l border-white/5 bg-gradient-to-b from-slate-900/90 via-slate-950/95 to-black/95 shadow-2xl"
+              transition={{ 
+                type: 'spring', 
+                stiffness: 300, 
+                damping: 30,
+                mass: 0.8
+              }}
+              className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col border-l border-white/10 bg-gradient-to-b from-slate-900/95 via-slate-950/98 to-black/98 shadow-2xl"
+              style={{
+                paddingTop: 'calc(env(safe-area-inset-top) + 1rem)',
+                paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)'
+              }}
             >
-              {/* Top bar inside the drawer */}
-              <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-white/5">
-                <span className="text-base font-semibold tracking-tight text-white">
+              {/* Enhanced top bar with better touch targets */}
+              <div className="flex items-center justify-between px-6 pt-4 pb-4 border-b border-white/10">
+                <span className="text-lg font-semibold tracking-tight text-white">
                   Dev101Labs
                 </span>
 
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-400/70 focus:ring-offset-2 focus:ring-offset-black"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-slate-200 hover:bg-white/20 active:bg-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-400/70 focus:ring-offset-2 focus:ring-offset-black touch-manipulation"
                   aria-label="Close navigation"
+                  type="button"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              {/* Main menu links */}
-              <nav className="flex-1 overflow-y-auto px-6 py-5 space-y-3">
+              {/* Optimized navigation links with better mobile spacing */}
+              <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-2">
                 <Link
                   href="/services"
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
+                  className="block rounded-xl px-5 py-4 text-lg font-medium text-slate-100 hover:bg-white/10 active:bg-white/15 transition-colors touch-manipulation"
                 >
                   Services
                 </Link>
                 <Link
                   href="/government"
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
+                  className="block rounded-xl px-5 py-4 text-lg font-medium text-slate-100 hover:bg-white/10 active:bg-white/15 transition-colors touch-manipulation"
                 >
                   Government Solutions
                 </Link>
                 <Link
                   href="/real-estate"
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
+                  className="block rounded-xl px-5 py-4 text-lg font-medium text-slate-100 hover:bg-white/10 active:bg-white/15 transition-colors touch-manipulation"
                 >
                   Real Estate Media
                 </Link>
                 <Link
                   href="/portfolio"
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
+                  className="block rounded-xl px-5 py-4 text-lg font-medium text-slate-100 hover:bg-white/10 active:bg-white/15 transition-colors touch-manipulation"
                 >
                   Portfolio
                 </Link>
                 <Link
                   href="/about"
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
+                  className="block rounded-xl px-5 py-4 text-lg font-medium text-slate-100 hover:bg-white/10 active:bg-white/15 transition-colors touch-manipulation"
                 >
                   About
                 </Link>
               </nav>
 
-              {/* CTA section at the bottom */}
-              <div className="border-t border-white/5 px-6 pb-7 pt-4 space-y-3 bg-black/40">
+              {/* Enhanced CTA section optimized for mobile */}
+              <div className="border-t border-white/10 px-4 pb-6 pt-6 space-y-4 bg-black/30">
                 <a
-                  href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AType%20of%20work%20I%27m%20interested%20in%3A%20%5BGovernment%20contracts%20%2F%20SaaS%20platform%20%2F%20Real%20estate%20media%20%2F%20Other%5D%0D%0AEstimated%20timeline%3A%20%5BTimeline%5D%0D%0ABudget%20range%3A%20%5BBudget%5D%0D%0A%0D%0ABrief%20description%20of%20the%20project%3A%0D%0A%5BProject%20details%5D%0D%0A%0D%0AThank%20you%21"
-                  className="inline-flex h-11 w-full items-center justify-center rounded-full bg-emerald-400 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-300"
+                  href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AType%20of%20work%20I%27m%20interested%20in%3A%20%5BGovernment%20contracts%20%2F%20SaaS%20platform%20%2F%20Real%20estate%20media%20%2F%20Other%5D%0D%0AEstimated%20timeline%3A%20%5BTimeline%5D%0D%0ABudget%20range%3A%20%5BBudget%5D%0D%0A%0D%0ABrief%20description%20of%20the%20project%3A%0D%5BProject%20details%5D%0D%0A%0D%0AThank%20you%21"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-full bg-emerald-400 text-base font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-300 active:bg-emerald-500 touch-manipulation"
                   onClick={() => setIsOpen(false)}
+                  type="button"
                 >
                   Book a Strategy Call
                 </a>
 
-                <p className="text-xs text-slate-400">
+                <p className="text-sm text-slate-400 text-center">
                   Or email us directly at{' '}
                   <a
                     href="mailto:info@dev101labs.com"
-                    className="font-medium text-emerald-300 hover:text-emerald-200"
+                    className="font-medium text-emerald-300 hover:text-emerald-200 active:text-emerald-400 transition-colors touch-manipulation"
                   >
                     info@dev101labs.com
                   </a>
