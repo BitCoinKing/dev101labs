@@ -119,7 +119,7 @@ export default function Header() {
               }}
             />
 
-            {/* Right-side dropdown menu with enhanced frosted glass */}
+            {/* Right-side dropdown menu container */}
             <motion.nav
               initial={{ y: '-100%', x: '100%' }}
               animate={{ y: 0, x: 0 }}
@@ -132,17 +132,21 @@ export default function Header() {
               }}
               className="relative ml-auto flex h-full w-80 max-w-[85vw] flex-col shadow-2xl border-l border-white/10"
               style={{
-                background: 'linear-gradient(135deg, rgba(30,41,59,1) 0%, rgba(15,23,42,1) 50%, rgba(0,0,0,1) 100%)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05)',
                 paddingTop: 'calc(env(safe-area-inset-top) + 1rem)',
                 paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)',
                 paddingRight: 'calc(env(safe-area-inset-right) + 1rem)'
               }}
             >
-              {/* Header with logo and close button */}
-              <div className="flex items-center justify-between mb-8 px-4">
+              {/* Header section with individual glass background */}
+              <div 
+                className="flex items-center justify-between mb-6 px-4 rounded-2xl border border-white/10"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                }}
+              >
                 <span className="text-xl font-bold tracking-tight text-white">
                   Dev101Labs
                 </span>
@@ -157,8 +161,16 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Navigation links */}
-              <nav className="flex-1 flex flex-col justify-center px-4 space-y-4">
+              {/* Navigation links section with individual glass background */}
+              <nav 
+                className="flex-1 flex flex-col justify-center px-4 space-y-3 rounded-2xl border border-white/10"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                }}
+              >
                 <Link
                   href="/services"
                   onClick={() => setIsOpen(false)}
@@ -196,8 +208,16 @@ export default function Header() {
                 </Link>
               </nav>
 
-              {/* CTA section at bottom */}
-              <div className="px-4 pb-6 pt-6 space-y-4">
+              {/* CTA section with individual glass background */}
+              <div 
+                className="px-4 pt-6 space-y-4 rounded-2xl border border-white/10"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                }}
+              >
                 <a
                   href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AType%20of%20work%20I%27m%20interested%20in%3A%20%5BGovernment%20contracts%20%2F%20SaaS%20platform%20%2F%20Real%20estate%20media%20%2F%20Other%5D%0D%0AEstimated%20timeline%3A%20%5BTimeline%5D%0D%0ABudget%20range%3A%20%5BBudget%5D%0D%0A%0D%0ABrief%20description%20of%20the%20project%3A%0D%5BProject%20details%5D%0D%0A%0D%0AThank%20you%21"
                   className="inline-flex h-12 w-full items-center justify-center rounded-full bg-emerald-400 text-base font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-300 active:bg-emerald-500 touch-manipulation"
