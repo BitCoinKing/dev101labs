@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header
       className={`
-        fixed top-0 left-0 right-0 z-50
+        fixed top-0 left-0 right-0 z-40
         transition-all duration-300
         backdrop-blur-md
         ${
@@ -100,148 +100,104 @@ export default function Header() {
       {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="
-              fixed inset-0 
-              z-[9999]           /* ensures menu is ALWAYS on top */
-              md:hidden flex flex-col 
-              bg-neutral-900/85  /* glass tint */
-              backdrop-blur-2xl  /* frosted look */
-              supports-backdrop-blur:bg-neutral-900/75
-            "
-            onClick={closeMobileNav}
+          <motion.div
+            key="mobile-nav-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[80] flex lg:hidden"
           >
-            {/* Top bar */}
-            <div className="flex items-center justify-between px-6 py-4 
-                            bg-neutral-900/90 backdrop-blur-xl 
-                            border-b border-neutral-800 
-                            z-[10000] relative">
-              {/* Logo */}
-              <Link
-                href="/"
-                className="text-lg font-semibold text-white"
-                onClick={closeMobileNav}
-              >
-                Dev101Labs
-              </Link>
+            {/* Dim + glass background behind the panel */}
+            <div
+              className="absolute inset-0 bg-slate-950/85 backdrop-blur-2xl"
+              onClick={() => setIsOpen(false)}
+            />
 
-              {/* Close button */}
-              <button
-                onClick={closeMobileNav}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700/80 bg-neutral-900/90 text-slate-100 hover:bg-neutral-800 transition-colors"
-                aria-label="Close navigation"
-              >
-                <X size={20} />
-              </button>
-            </div>
+            {/* Sliding glass panel */}
+            <motion.nav
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+              className="relative ml-auto flex h-full w-full max-w-sm flex-col border-l border-white/5 bg-gradient-to-b from-slate-900/90 via-slate-950/95 to-black/95 shadow-2xl"
+            >
+              {/* Top bar inside the drawer */}
+              <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-white/5">
+                <span className="text-base font-semibold tracking-tight text-white">
+                  Dev101Labs
+                </span>
 
-            {/* Navigation content */}
-            <div className="flex-1 overflow-y-auto px-6 pt-6 pb-8">
-              <div className="flex flex-col gap-4">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-400/70 focus:ring-offset-2 focus:ring-offset-black"
+                  aria-label="Close navigation"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Main menu links */}
+              <nav className="flex-1 overflow-y-auto px-6 py-5 space-y-3">
                 <Link
                   href="/services"
-                  onClick={closeMobileNav}
-                  className="
-                    block w-full
-                    rounded-xl
-                    bg-neutral-900/60        /* subtle panel under each link */
-                    border border-neutral-800/40
-                    px-4 py-3 text-lg font-medium text-white
-                    hover:bg-neutral-800/80 hover:text-teal-300
-                    transition-colors
-                  "
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
                 >
                   Services
                 </Link>
-
                 <Link
                   href="/government"
-                  onClick={closeMobileNav}
-                  className="
-                    block w-full
-                    rounded-xl
-                    bg-neutral-900/60        /* subtle panel under each link */
-                    border border-neutral-800/40
-                    px-4 py-3 text-lg font-medium text-white
-                    hover:bg-neutral-800/80 hover:text-teal-300
-                    transition-colors
-                  "
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
                 >
                   Government Solutions
                 </Link>
-
                 <Link
                   href="/real-estate"
-                  onClick={closeMobileNav}
-                  className="
-                    block w-full
-                    rounded-xl
-                    bg-neutral-900/60        /* subtle panel under each link */
-                    border border-neutral-800/40
-                    px-4 py-3 text-lg font-medium text-white
-                    hover:bg-neutral-800/80 hover:text-teal-300
-                    transition-colors
-                  "
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
                 >
                   Real Estate Media
                 </Link>
-
                 <Link
                   href="/portfolio"
-                  onClick={closeMobileNav}
-                  className="
-                    block w-full
-                    rounded-xl
-                    bg-neutral-900/60        /* subtle panel under each link */
-                    border border-neutral-800/40
-                    px-4 py-3 text-lg font-medium text-white
-                    hover:bg-neutral-800/80 hover:text-teal-300
-                    transition-colors
-                  "
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
                 >
                   Portfolio
                 </Link>
-
                 <Link
                   href="/about"
-                  onClick={closeMobileNav}
-                  className="
-                    block w-full
-                    rounded-xl
-                    bg-neutral-900/60        /* subtle panel under each link */
-                    border border-neutral-800/40
-                    px-4 py-3 text-lg font-medium text-white
-                    hover:bg-neutral-800/80 hover:text-teal-300
-                    transition-colors
-                  "
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-slate-100 hover:bg-white/5"
                 >
                   About
                 </Link>
-              </div>
+              </nav>
 
-              {/* Divider */}
-              <div className="my-8 h-px bg-slate-800/80" />
-
-              {/* CTA Block */}
-              <div className="mt-8 space-y-4 bg-neutral-900/60 rounded-2xl p-4 border border-neutral-800/40">
+              {/* CTA section at the bottom */}
+              <div className="border-t border-white/5 px-6 pb-7 pt-4 space-y-3 bg-black/40">
                 <a
-                  href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Tell%20us%20about%20your%20project%2C%20timeline%2C%20and%20what%20a%20win%20looks%20like."
-                  className="w-full inline-flex items-center justify-center rounded-full bg-teal-500 py-3 text-base font-semibold text-black hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/30"
-                  onClick={closeMobileNav}
+                  href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AType%20of%20work%20I%27m%20interested%20in%3A%20%5BGovernment%20contracts%20%2F%20SaaS%20platform%20%2F%20Real%20estate%20media%20%2F%20Other%5D%0D%0AEstimated%20timeline%3A%20%5BTimeline%5D%0D%0ABudget%20range%3A%20%5BBudget%5D%0D%0A%0D%0ABrief%20description%20of%20the%20project%3A%0D%0A%5BProject%20details%5D%0D%0A%0D%0AThank%20you%21"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-full bg-emerald-400 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-300"
+                  onClick={() => setIsOpen(false)}
                 >
                   Book a Strategy Call
                 </a>
-                <p className="text-center text-xs text-slate-400">
-                  Or email us directly at{" "}
-                  <span className="font-medium text-slate-100">info@dev101labs.com</span>
+
+                <p className="text-xs text-slate-400">
+                  Or email us directly at{' '}
+                  <a
+                    href="mailto:info@dev101labs.com"
+                    className="font-medium text-emerald-300 hover:text-emerald-200"
+                  >
+                    info@dev101labs.com
+                  </a>
                 </p>
               </div>
-            </div>
-          </motion.nav>
+            </motion.nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>
