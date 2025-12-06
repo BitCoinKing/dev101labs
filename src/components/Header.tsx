@@ -103,13 +103,20 @@ export default function Header() {
           <motion.nav
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-[60] md:hidden flex flex-col bg-neutral-950/95 backdrop-blur-xl border-t border-neutral-800"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="
+              fixed inset-0 z-[200]
+              md:hidden flex flex-col
+              bg-neutral-900/80      /* strong tint */
+              backdrop-blur-2xl      /* frosted glass effect */
+              supports-backdrop-blur:bg-neutral-900/70
+              border-t border-neutral-800
+            "
             onClick={closeMobileNav}
           >
             {/* Top bar */}
-            <div className="flex items-center justify-between px-6 pt-4 pb-3 bg-neutral-950/95">
+            <div className="flex items-center justify-between px-6 py-4 bg-neutral-900/90 backdrop-blur-xl border-b border-neutral-800">
               {/* Logo */}
               <Link
                 href="/"
@@ -130,13 +137,20 @@ export default function Header() {
             </div>
 
             {/* Navigation content */}
-            <div className="mt-6 flex-1 overflow-y-auto px-6 pb-8">
-              {/* Primary links */}
-              <div className="flex flex-col gap-3 text-base font-medium text-slate-100">
+            <div className="flex-1 overflow-y-auto px-6 pt-6 pb-8">
+              <div className="flex flex-col gap-4">
                 <Link
                   href="/services"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
+                  className="
+                    block w-full
+                    rounded-xl
+                    bg-neutral-900/60        /* subtle panel under each link */
+                    border border-neutral-800/40
+                    px-4 py-3 text-lg font-medium text-white
+                    hover:bg-neutral-800/80 hover:text-teal-300
+                    transition-colors
+                  "
                 >
                   Services
                 </Link>
@@ -144,7 +158,15 @@ export default function Header() {
                 <Link
                   href="/government"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
+                  className="
+                    block w-full
+                    rounded-xl
+                    bg-neutral-900/60        /* subtle panel under each link */
+                    border border-neutral-800/40
+                    px-4 py-3 text-lg font-medium text-white
+                    hover:bg-neutral-800/80 hover:text-teal-300
+                    transition-colors
+                  "
                 >
                   Government Solutions
                 </Link>
@@ -152,7 +174,15 @@ export default function Header() {
                 <Link
                   href="/real-estate"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
+                  className="
+                    block w-full
+                    rounded-xl
+                    bg-neutral-900/60        /* subtle panel under each link */
+                    border border-neutral-800/40
+                    px-4 py-3 text-lg font-medium text-white
+                    hover:bg-neutral-800/80 hover:text-teal-300
+                    transition-colors
+                  "
                 >
                   Real Estate Media
                 </Link>
@@ -160,7 +190,15 @@ export default function Header() {
                 <Link
                   href="/portfolio"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
+                  className="
+                    block w-full
+                    rounded-xl
+                    bg-neutral-900/60        /* subtle panel under each link */
+                    border border-neutral-800/40
+                    px-4 py-3 text-lg font-medium text-white
+                    hover:bg-neutral-800/80 hover:text-teal-300
+                    transition-colors
+                  "
                 >
                   Portfolio
                 </Link>
@@ -168,7 +206,15 @@ export default function Header() {
                 <Link
                   href="/about"
                   onClick={closeMobileNav}
-                  className="flex items-center justify-between rounded-lg px-2 py-2.5 text-slate-100 hover:text-teal-300 hover:bg-neutral-900/70 transition-colors"
+                  className="
+                    block w-full
+                    rounded-xl
+                    bg-neutral-900/60        /* subtle panel under each link */
+                    border border-neutral-800/40
+                    px-4 py-3 text-lg font-medium text-white
+                    hover:bg-neutral-800/80 hover:text-teal-300
+                    transition-colors
+                  "
                 >
                   About
                 </Link>
@@ -178,7 +224,7 @@ export default function Header() {
               <div className="my-8 h-px bg-slate-800/80" />
 
               {/* CTA Block */}
-              <div className="mt-6 space-y-3">
+              <div className="mt-8 space-y-4 bg-neutral-900/60 rounded-2xl p-4 border border-neutral-800/40">
                 <a
                   href="mailto:info@dev101labs.com?subject=Strategy%20Call%20with%20Dev101Labs&body=Tell%20us%20about%20your%20project%2C%20timeline%2C%20and%20what%20a%20win%20looks%20like."
                   className="w-full inline-flex items-center justify-center rounded-full bg-teal-500 py-3 text-base font-semibold text-black hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/30"
