@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { strategyCallMailto } from "@/lib/contact";
 
 const container = {
   hidden: { opacity: 0, y: 20 },
@@ -33,13 +34,20 @@ const AUDIENCES = [
   },
 ];
 
-const STRATEGY_EMAIL_TO = "info@dev101labs.com";
-const STRATEGY_EMAIL_SUBJECT = "Strategy Call Request – Dev101Labs Website";
-const STRATEGY_EMAIL_BODY = `Hi%20Dev101Labs%2C%0D%0A%0D%0AMy%20name%20is%3A%20%5BName%5D%0D%0AMy%20company%20is%3A%20%5BCompany%5D%0D%0AWebsite%3A%20%5BURL%5D%0D%0A%0D%0AWhat%20I%E2%80%99d%20like%20help%20with%3A%0D%0A%5BBrief%20description%20of%20project%20or%20needs%5D%0D%0A%0D%0AEstimated%20budget%20range%3A%20%5BBudget%5D%0D%0AIdeal%20timeline%3A%20%5BTimeline%5D%0D%0A%0D%0AHow%20did%20you%20hear%20about%20Dev101Labs%3F%0D%0A%5BReferral%20or%20source%5D%0D%0A%0D%0A-%0D%0A%5BYour%20Name%5D`;
-
-const strategyCallMailto = `mailto:${STRATEGY_EMAIL_TO}?subject=${encodeURIComponent(
-  STRATEGY_EMAIL_SUBJECT
-)}&body=${encodeURIComponent(STRATEGY_EMAIL_BODY)}`;
+const ENGAGEMENT_HIGHLIGHTS = [
+  {
+    title: "Government bids",
+    description: "Procurement support, compliance guidance, and delivery planning.",
+  },
+  {
+    title: "Product launches",
+    description: "Modern websites, apps, and automation for fast-moving teams.",
+  },
+  {
+    title: "Listing campaigns",
+    description: "Media, funnels, and polished property experiences that convert.",
+  },
+] as const;
 
 export default function Hero() {
   const [audienceIndex, setAudienceIndex] = useState(0);
@@ -90,15 +98,15 @@ export default function Hero() {
           </p>
 
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl leading-[1.05]">
-            We Build Technology, Media, and Strategy
+            We Build the Systems and Campaigns
             <br />
             That Win Contracts, Customers, and Listings.
           </h1>
 
           <p className="mt-6 max-w-xl text-sm text-neutral-300 md:text-base">
             Dev101Labs partners with government agencies, SaaS teams, and real estate
-            professionals to design, build, and launch the systems, experiences, and
-            campaigns that actually move the needle.
+            professionals to scope, build, and launch the digital systems, media, and
+            strategy work that creates real momentum.
           </p>
 
           <div className="mt-6">
@@ -141,6 +149,11 @@ export default function Hero() {
               Explore Services
             </Link>
           </div>
+
+          <p className="text-xs text-neutral-400">
+            Share your goals, timeline, and budget and we will point you to the
+            fastest sensible next step.
+          </p>
 
           {/* Small "credibility" stats row */}
           <div className="mt-5 flex flex-col items-center gap-4 text-xs text-neutral-500 sm:flex-row sm:justify-start sm:text-[13px]">
@@ -204,6 +217,22 @@ export default function Hero() {
             >
               Growth & Real Estate Media
             </motion.div>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            {ENGAGEMENT_HIGHLIGHTS.map((highlight) => (
+              <div
+                key={highlight.title}
+                className="rounded-2xl border border-neutral-800/80 bg-neutral-900/70 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.45)]"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                  {highlight.title}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-neutral-300">
+                  {highlight.description}
+                </p>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

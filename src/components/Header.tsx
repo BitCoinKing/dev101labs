@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { buildMailtoHref } from "@/lib/contact";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -17,6 +18,25 @@ export function Header() {
   const pathname = usePathname();
   const [hasScrolled, setHasScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const strategyCallMailto = buildMailtoHref({
+    to: "info@dev101labs.com",
+    subject: "Strategy Call with Dev101Labs",
+    bodyLines: [
+      "Hi Dev101Labs,",
+      "",
+      "I'd like to schedule a strategy call.",
+      "",
+      "A bit about my organization / project:",
+      "- Company / agency:",
+      "- Website (if any):",
+      "- Are you looking for government contracts, SaaS builds, real estate media, or something else?",
+      "- Rough timeline:",
+      "- Budget range:",
+      "",
+      "Best,",
+      "",
+    ],
+  });
 
   useEffect(() => {
     const onScroll = () => setHasScrolled(window.scrollY > 16);
@@ -25,32 +45,8 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   const handleStrategyClick = () => {
-    const subject = encodeURIComponent("Strategy Call with Dev101Labs");
-    const body = encodeURIComponent(
-      [
-        "Hi Dev101Labs,",
-        "",
-        "I'd like to schedule a strategy call.",
-        "",
-        "A bit about my organization / project:",
-        "- Company / agency:",
-        "- Website (if any):",
-        "- Are you looking for government contracts, SaaS builds, real estate media, or something else?",
-        "- Rough timeline:",
-        "- Budget range:",
-        "",
-        "Best,",
-        "",
-      ].join("\n")
-    );
-
-    window.location.href = `mailto:info@dev101labs.com?subject=${subject}&body=${body}`;
+    window.location.href = strategyCallMailto;
   };
 
   const isActive = (href: string) =>
@@ -188,6 +184,7 @@ export function Header() {
                       <button
                         key={link.href}
                         onClick={() => {
+                          setMobileOpen(false);
                           window.location.href = link.href;
                         }}
                         className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-base font-medium shadow-[0_18px_45px_rgba(15,23,42,0.85)] transition ${
