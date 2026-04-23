@@ -20,6 +20,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Dev101Labs - Technology. Strategy. Creative. Compliance.",
   description: "Dev101Labs is a multidisciplinary technology and government solutions firm specializing in helping organizations and entrepreneurs secure competitive advantages through digital transformation, procurement strategy, and end-to-end creative services.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg?v=20260423", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=20260423" },
+    ],
+    shortcut: "/favicon.ico?v=20260423",
+  },
 };
 
 export default function RootLayout({
